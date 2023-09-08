@@ -4,9 +4,10 @@ import {
   configureStore,
 } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { pokemonReducer } from "./pokemons/pokemonsSlice";
 
 const rootReducer = combineReducers({
-  // insert the slices reducers
+  pokemonStore: pokemonReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
