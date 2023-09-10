@@ -1,3 +1,5 @@
+import { PokeType } from "./types";
+
 export interface IPokemons {
   count: number;
   next: string;
@@ -348,5 +350,12 @@ export interface Type {
 }
 
 export interface PokemonStateStructure {
+  isFilter: boolean;
   results: IResult[];
+  pokemons: string[];
+  pokemon: IPokemon;
+}
+
+export interface FilterStateStructure {
+  filters: PokeType[];
 }

@@ -1,6 +1,7 @@
 import { useCallback } from "react";
-import { IResult } from "../../interfaces/interfaces";
+import { IPokemon, IResult } from "../../interfaces/interfaces";
 import axios from "axios";
+import { PokeType, PokemonsByTypeResult } from "../../interfaces/types";
 
 const usePokemons = () => {
   const allPokemonsUrl =
@@ -19,8 +20,38 @@ const usePokemons = () => {
     }
   }, []);
 
+  const getFilteredPokemons = useCallback(async ({ url }: PokeType) => {
+    const { data } = await axios.get<{ pokemon: PokemonsByTypeResult[] }>(
+      url as string,
+    );
+    const pokemons = data?.pokemon?.map(
+      ({ pokemon }: PokemonsByTypeResult) => pokemon?.url,
+    );
+
+    return { pokemons };
+  }, []);
+
+  const getPokemon = useCallback(
+    async (url?: string, id?: string): Promise<IPokemon> => {
+      if (url) {
+        const { data: pokemon } = await axios.get<IPokemon>(url);
+
+        return pokemon;
+      } else {
+        const { data: pokemon } = await axios.get<IPokemon>(
+          `https://pokeapi.co/api/v2/pokemon/${id}`,
+        );
+
+        return pokemon;
+      }
+    },
+    [],
+  );
+
   return {
     getPokemons,
+    getFilteredPokemons,
+    getPokemon,
   };
 };
 

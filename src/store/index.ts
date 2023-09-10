@@ -5,9 +5,11 @@ import {
 } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { pokemonReducer } from "./pokemons/pokemonsSlice";
+import { filtersReducer } from "./filters/filtersSlice";
 
 const rootReducer = combineReducers({
   pokemonStore: pokemonReducer,
+  filterStore: filtersReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
