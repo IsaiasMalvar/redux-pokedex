@@ -8,10 +8,13 @@ import {
   loadPokemonsActionCreator,
 } from "../../store/pokemons/pokemonsSlice";
 import { PokeType } from "../../interfaces/types";
+import useFilters from "../../hooks/useFilters/useFilters";
+import { setFiltersActionCreator } from "../../store/filters/filtersSlice";
 
 const App = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { getPokemons, getFilteredPokemons, getPokemon } = usePokemons();
+  const { getFilters } = useFilters();
 
   useEffect(() => {
     const url = "https://pokeapi.co/api/v2/pokemon/10092/";
@@ -39,7 +42,15 @@ const App = (): React.ReactElement => {
         dispatch(loadPokemonActionCreator(pokemon));
       }
     })();
-  }, [dispatch, getFilteredPokemons, getPokemon, getPokemons]);
+
+    (async () => {
+      const filters = await getFilters();
+      console.log(filters);
+      if (filters) {
+        dispatch(setFiltersActionCreator(filters));
+      }
+    })();
+  }, [dispatch, getFilteredPokemons, getFilters, getPokemon, getPokemons]);
 
   const { results, pokemons, pokemon } = useAppSelector(
     (state) => state.pokemonStore,
@@ -55,6 +66,7 @@ const App = (): React.ReactElement => {
       {pokemons.map((pokemon, index) => (
         <h2 key={index}>{pokemon}</h2>
       ))}
+
       <h3>{pokemon.name}</h3>
       <Layout />
     </>
