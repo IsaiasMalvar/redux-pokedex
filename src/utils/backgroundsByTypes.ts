@@ -20,7 +20,7 @@ export type PokeTypes =
   | "unknown"
   | "shadow";
 
-export const background: { [key in PokeTypes]: string } = {
+export const typesColor: { [key: string]: string } = {
   normal: "#AAA67F",
   fighting: "#C12239",
   flying: "#A891EC",
