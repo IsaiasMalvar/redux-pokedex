@@ -10,6 +10,7 @@ import {
 import useFilters from "../../hooks/useFilters/useFilters";
 import { setFiltersActionCreator } from "../../store/filters/filtersSlice";
 import PokemonList from "../PokemonList/PokemonList";
+import PokemonCard from "../PokemonCard/PokemonCard";
 
 const App = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -46,6 +47,7 @@ const App = (): React.ReactElement => {
   return (
     <>
       <PokemonList />
+      <PokemonCard url="https://pokeapi.co/api/v2/pokemon/10092/" />
       <Layout />
     </>
   );
