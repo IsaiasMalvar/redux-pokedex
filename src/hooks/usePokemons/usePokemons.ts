@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { IPokemon, IResult } from "../../interfaces/interfaces";
 import axios from "axios";
-import { PokeType, PokemonsByTypeResult } from "../../interfaces/types";
+import { PokemonsByTypeResult } from "../../interfaces/types";
 
 const usePokemons = () => {
   const allPokemonsUrl =
@@ -20,15 +20,17 @@ const usePokemons = () => {
     }
   }, []);
 
-  const getFilteredPokemons = useCallback(async ({ url }: PokeType) => {
-    const { data } = await axios.get<{ pokemon: PokemonsByTypeResult[] }>(
-      url as string,
-    );
-    const pokemons = data?.pokemon?.map(
-      ({ pokemon }: PokemonsByTypeResult) => pokemon?.url,
-    );
+  const getFilteredPokemons = useCallback(async (url: string) => {
+    if (url) {
+      const { data } = await axios.get<{ pokemon: PokemonsByTypeResult[] }>(
+        url as string,
+      );
+      const pokemons = data?.pokemon?.map(
+        ({ pokemon }: PokemonsByTypeResult) => pokemon?.url,
+      );
 
-    return { pokemons };
+      return { pokemons };
+    }
   }, []);
 
   const getPokemon = useCallback(

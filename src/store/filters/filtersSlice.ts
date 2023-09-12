@@ -5,7 +5,7 @@ import { PokeType } from "../../interfaces/types";
 const filtersState: FilterStateStructure = {
   filters: [
     {
-      name: "All",
+      name: "all",
       url: "https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0",
     },
   ],
@@ -20,7 +20,7 @@ const FiltersSlice = createSlice({
       action: PayloadAction<PokeType[]>,
     ): FilterStateStructure => ({
       ...currentState,
-      filters: [...action.payload],
+      filters: [...currentState.filters, ...action.payload],
     }),
   },
 });
