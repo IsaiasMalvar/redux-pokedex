@@ -1,7 +1,7 @@
 import { PokeTypes } from "../utils/backgroundsByTypes";
 
 export type PokeType = {
-  name: PokeTypes | "All";
+  name: PokeTypes | "all";
   url?: string;
 };
 

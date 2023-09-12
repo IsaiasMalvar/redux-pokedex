@@ -21,6 +21,7 @@ export type PokeTypes =
   | "shadow";
 
 export const typesColor: { [key: string]: string } = {
+  all: "#41343483",
   normal: "#AAA67F",
   fighting: "#C12239",
   flying: "#A891EC",

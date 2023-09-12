@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   font-family:  'Phudu', cursive;
 }
+
 `;
 
 export default GlobalStyle;

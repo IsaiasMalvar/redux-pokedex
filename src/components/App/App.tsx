@@ -12,6 +12,8 @@ import { setFiltersActionCreator } from "../../store/filters/filtersSlice";
 import PokemonList from "../PokemonList/PokemonList";
 import PokemonCard from "../PokemonCard/PokemonCard";
 
+import Filters from "../Filters/Filters";
+
 const App = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { getPokemons, getFilteredPokemons, getPokemon } = usePokemons();
@@ -44,8 +46,11 @@ const App = (): React.ReactElement => {
     })();
   }, [dispatch, getFilteredPokemons, getFilters, getPokemon, getPokemons]);
 
+  const setFilter = () => {};
+
   return (
     <>
+      <Filters setFilter={setFilter} />
       <PokemonList />
       <PokemonCard url="https://pokeapi.co/api/v2/pokemon/10092/" />
       <Layout />
