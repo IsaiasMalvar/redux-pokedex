@@ -17,7 +17,6 @@ const Filters = ({ setFilter }: FilterProps): React.ReactElement => {
     setFilter(event?.target.value);
     const filterColor = selectedOption.text;
     setColor(typesColor[filterColor]);
-    console.log(color);
   };
 
   return (

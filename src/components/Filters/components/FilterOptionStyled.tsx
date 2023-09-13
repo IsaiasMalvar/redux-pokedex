@@ -5,6 +5,7 @@ const OptionsStyled = styled.option<{ $typeColor?: string }>`
   color: #ffffff;
   font-size: 1rem;
   font-weight: bold;
+  text-align: center;
 `;
 
 export default OptionsStyled;

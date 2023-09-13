@@ -1,18 +1,18 @@
 import { useAppSelector } from "../../store";
+import PokemonCard from "../PokemonCard/PokemonCard";
 import PokemonListStyled from "./PokemonListStyled";
 
 const PokemonList = (): React.ReactElement => {
-  const { pokemons, results, isFilter } = useAppSelector(
-    (state) => state.pokemonStore,
-  );
-
-  console.log(pokemons);
+  const { results } = useAppSelector((state) => state.pokemonStore);
+  console.log(results);
 
   return (
     <PokemonListStyled>
-      {isFilter
-        ? pokemons.map((pokemon, index) => <li key={index}>{pokemon}</li>)
-        : results.map(({ url }, index) => <li key={index}>{url}</li>)}
+      {results.map((pokemon) => (
+        <li key={pokemon.url}>
+          <PokemonCard url={pokemon.url} />
+        </li>
+      ))}
     </PokemonListStyled>
   );
 };
