@@ -9,13 +9,13 @@ export const usePagination = () => {
 
   const nextPage = () => {
     changePage(page + 1);
-    navigate(`/?page=${page + 1}`);
+    navigate(`/home?page=${page + 1}`);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const previousPage = () => {
     changePage(page - 1);
-    navigate(`/?page=${page - 1}`);
+    navigate(`/home?page=${page - 1}`);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
@@ -24,9 +24,21 @@ export const usePagination = () => {
     navigate("/");
   };
 
+  const backTo1Filter = () => {
+    changePage(1);
+    navigate(`/home?page=${1}`);
+  };
+
   useEffect(() => {
     changePage(parseInt(searchParams.get("page")!) || 1);
   }, [searchParams]);
 
-  return { page, nextPage, previousPage, changePage, backToHome };
+  return {
+    page,
+    nextPage,
+    previousPage,
+    changePage,
+    backToHome,
+    backTo1Filter,
+  };
 };

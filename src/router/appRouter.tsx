@@ -1,5 +1,6 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../components/App/App";
+import HomePage from "../pages/HomePage/HomePage";
 
 const routes: RouteObject[] = [
   {
@@ -8,7 +9,11 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate to="/" replace />,
+        element: <Navigate to="/home" />,
+      },
+      {
+        path: "/home",
+        element: <HomePage />,
       },
     ],
   },

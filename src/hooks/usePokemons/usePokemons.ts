@@ -29,7 +29,7 @@ const usePokemons = () => {
         ({ pokemon }: PokemonsByTypeResult) => pokemon?.url,
       );
 
-      return { pokemons };
+      return pokemons;
     }
   }, []);
 

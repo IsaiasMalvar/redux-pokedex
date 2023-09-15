@@ -6,17 +6,23 @@ import FilterOption from "./components/FilterOption";
 
 interface FilterProps {
   setFilter: (type: string) => void;
+  setRestart: () => void;
 }
 
-const Filters = ({ setFilter }: FilterProps): React.ReactElement => {
+const Filters = ({
+  setFilter,
+  setRestart,
+}: FilterProps): React.ReactElement => {
   const [color, setColor] = useState("");
   const { filters } = useAppSelector((state) => state.filterStore);
 
   const onChangeType = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = event.target.selectedOptions[0];
     setFilter(event?.target.value);
+    console.log(event.target.value);
     const filterColor = selectedOption.text;
     setColor(typesColor[filterColor]);
+    setRestart();
   };
 
   return (
