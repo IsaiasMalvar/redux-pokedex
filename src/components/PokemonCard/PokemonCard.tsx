@@ -226,7 +226,11 @@ const PokemonCard = ({ url }: PokemonCardProps): React.ReactElement => {
   console.log(pokemon);
 
   return (
-    <PokemonCardStyled to="/" className="poke-card" $typeColor={typeColor}>
+    <PokemonCardStyled
+      to={`/${pokemon.id}`}
+      className="poke-card"
+      $typeColor={typeColor}
+    >
       <div className="poke-card__top-section">
         <span className="poke-card__id">#{pokemon?.id}</span>
 

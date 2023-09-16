@@ -1,6 +1,7 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../components/App/App";
 import HomePage from "../pages/HomePage/HomePage";
+import DetailPage from "../pages/DetailPage/DetailPage";
 
 const routes: RouteObject[] = [
   {
@@ -14,6 +15,10 @@ const routes: RouteObject[] = [
       {
         path: "/home",
         element: <HomePage />,
+      },
+      {
+        path: "/:pokeId",
+        element: <DetailPage />,
       },
     ],
   },
