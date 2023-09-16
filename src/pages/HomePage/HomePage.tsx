@@ -16,7 +16,8 @@ import { Pagination } from "../../components/Pagination/Pagination";
 const HomePage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { getPokemons, getFilteredPokemons } = usePokemons();
-  const { page, nextPage, previousPage, backTo1Filter } = usePagination();
+  const { page, nextPage, previousPage, restartFilteredPages } =
+    usePagination();
   const { getFilters } = useFilters();
   const [filter, setFilter] = useState("");
 
@@ -58,7 +59,7 @@ const HomePage = (): React.ReactElement => {
 
   return (
     <>
-      <Filters setFilter={setFilter} setRestart={backTo1Filter} />
+      <Filters setFilter={setFilter} setRestart={restartFilteredPages} />
       <PokemonList page={page} perPage={perPage} />
       <Pagination
         page={page}

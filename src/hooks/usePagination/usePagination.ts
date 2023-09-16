@@ -24,7 +24,7 @@ export const usePagination = () => {
     navigate("/");
   };
 
-  const backTo1Filter = () => {
+  const restartFilteredPages = () => {
     changePage(1);
     navigate(`/home?page=${1}`);
   };
@@ -39,6 +39,6 @@ export const usePagination = () => {
     previousPage,
     changePage,
     backToHome,
-    backTo1Filter,
+    restartFilteredPages,
   };
 };
