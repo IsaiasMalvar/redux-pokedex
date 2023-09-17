@@ -4,6 +4,7 @@ import usePokemons from "../../hooks/usePokemons/usePokemons";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { loadPokemonActionCreator } from "../../store/pokemons/pokemonsSlice";
 import PokemonDetail from "../../components/PokemonDetail/PokemonDetail";
+import GoToTop from "../../utils/GoToTop";
 
 const DetailPage = (): React.ReactElement => {
   const { getPokemon } = usePokemons();
@@ -22,7 +23,12 @@ const DetailPage = (): React.ReactElement => {
 
   const { pokemon } = useAppSelector((state) => state.pokemonStore);
 
-  return <PokemonDetail pokemon={pokemon} />;
+  return (
+    <>
+      <GoToTop />
+      <PokemonDetail pokemon={pokemon} />
+    </>
+  );
 };
 
 export default DetailPage;
